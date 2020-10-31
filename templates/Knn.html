@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result{
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Disease Prediction</title>
+</head>
+<body>
+    
+<div class="1">   
+    <div class="container">   
+   
+<form action="{{ url_for('Knn') }}" method="POST" >
+    <fieldset class="fd">
+        <legend>Input values:</legend>
+        
+<div class="row">
+    <div class="col-25">
+      <label>Age:</label>
+    </div>
+    <div class="col-75">
+      <input name="Age" id="Age" class="input" type="number" required min="1" max="100">
+    </div>
+ </div>
+<div class="row">
+    <div class="col-25">
+     <label>Sex:</label>
+    </div>
+    <div class="col-75">
+     <input id="Sex" name="Sex" type="number" class="input"  min="0" max="1">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+     <label>Blood Pressure(Bp):</label>
+    </div>
+    <div class="col-75">
+     <input name="Bp" type="number" class="input"  min="1" max="280">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Specific Gravity(Sg):</label>
+    </div>
+    <div class="col-75">
+     <input name="Sg" type="number"class="input" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+        <label>Albumin(Al):</label>
+    </div>
+    <div class="col-75">
+     <input name="Al" type="number" class="input"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Sugar(Su):</label> 
+    </div>
+    <div class="col-75">
+     <input name="Su" type="number" class="input"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Red Blood Cell(Rbc):</label> 
+    </div>
+    <div class="col-75">
+     <input name="Rbc" type="number" class="input"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+      <label>Blood Urea(Bu):</label>
+    </div>
+    <div class="col-75">
+     <input name="Bu" type="number"class="input" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Serun Creatnine(Sc):</label> 
+    </div>
+    <div class="col-75">
+     <input name="Sc" id="Sc" type="number" class="input"required min="0.5" max="20.5" step="0.01">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+      <label>Sodium(Sod):</label>
+    </div>
+    <div class="col-75">
+    <input name="Sod" type="number" class="input"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Pottasium(Pot):</label>
+    </div>
+    <div class="col-75">
+    <input name="Pot" type="number"class="input" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Hemoglobin(Hemo):</label>
+    </div>
+    <div class="col-75">
+     <input name="Hemo" type="number"class="input" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>White Blood(Wbcc):</label> 
+    </div>
+    <div class="col-75">
+    <input name="Wbcc" type="number"class="input" required min="">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+        <label>Red Blood(Rbcc):</label> 
+    </div>
+    <div class="col-75">
+   <input name="Rbcc" type="number"class="input" required min="1" max="8" step="0.01">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Hypertension(Htn):</label>
+    </div>
+    <div class="col-75">
+            <input name="Htn" type="number" class="input"required min="0" max="1">
+    </div>
+  </div>
+        <br>
+        <input type="submit" value="submit" onclick="myFunction()">
+    
+        </fieldset> 
+    </form>
+</div>    
+    </div>   
+</body>
+<br>
+<div class="result" align="center">
+    {% if result == 1%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br> Prediction:
+	<h2 style="color:red;">CKD</h2>
+	{% elif result == 0%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br> Prediction:
+	<h2 style="color:blue;">Not CKD</h2>
+	{% endif %}
+</div>
+</html>

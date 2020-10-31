@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+    <title>Disease Prediction</title>
+</head>
+<style>
+/* Form and result css part*/
+    
+    * {
+  box-sizing: border-box;
+}
+    
+.result{
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+    top: 180px;
+    position: absolute;
+    right: 20px; 
+    border: 1px solid black;
+}
+div{
+        font-size:18px;
+}   
+        
+form {
+    margin: auto;
+    width: 50%;
+    border-color: transparent;
+    
+}
+.r1{
+    color: white;
+}
+
+body{
+  background-image: url("/static/styles/AAHM-.jpg");
+  background-color: darkorange; 
+  background-size: 100% 100%;
+  height: 600px;
+  background-size:auto;
+}
+.input {
+  width: 100%;
+  padding: 3px;
+  border-radius: 40px;
+  resize: vertical;
+  background-color: transparent;
+  color:whitesmoke;
+}
+
+
+label {
+  padding:  2px 4px 0;
+  display: inline-block;
+  color:white;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+#1{
+        position: relative;
+        height: auto;
+}
+ 
+
+.container {
+    padding: 8px;
+    left: 0; 
+    position: absolute; 
+    width: 60%;
+    top: 160px;
+    
+    
+}
+    .header{
+        float: right;
+    }
+.col-25 {
+  float: left;
+  width: 55%;
+  padding-left:03px;
+  margin-top: 3px;
+  font-size: 16px;
+}
+
+.col-75 {
+  float: right;
+  width: 45%;
+  padding-left: 20px;
+  margin-top: 3px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+   
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+
+/* Navigation part css of the page*/    
+
+.active {
+  text-decoration: underline;
+}
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+    #home{
+        float: right;
+        padding: 25px;
+        font-size: 20px;
+        font-family: cursive;
+    }
+
+    #prediction{
+        float: right;
+        padding: 25px;
+        font-size: 20px;
+        font-family: cursive;
+    }
+
+    #about1{
+        float: right;
+        padding: 25px;
+        font-size: 20px;
+        font-family: cursive;
+    }
+/* About Part css */    
+
+#about{
+    position:relative;
+    top: 650px;
+    }    
+    #topb{
+        float: right;
+        margin-left: 1220px;
+        padding: 18px;
+        border-radius: 8px;
+        position: relative;
+        display: block;
+}    
+
+    
+</style>
+    
+<body>   
+<! –– Navigation part of the page -->    
+    
+<div id="nav">
+  <span id="about1"><a href="#about" target="_self">About</a></span>
+  <span id="prediction"><a href="#1" target="_self">Prediction</a></span>
+  <span id="home"><a class="active" href="" target="_self">Home</a></span>
+</div>  
+    
+<! –– Picture part of the page -->      
+        
+<div id ="pict">
+<h2 align="center">Chronic Kidney Disease Predictor</h2>
+    
+</div>
+    
+    
+<! –– Prediction part of the page -->     
+    
+<div id="1">   
+<div class="container">   
+   
+<form action="{{ url_for('Random') }}" method="POST" >
+    <fieldset class="fd">
+        <legend>Input values:</legend>
+        
+<div class="row">
+    <div class="col-25">
+      <label>Age (1-100):</label>
+    </div>
+    <div class="col-75">
+      <input name="Age" id="Age" class="input" type="number" required min="1" max="100">
+    </div>
+ </div>
+<div class="row">
+    <div class="col-25">
+     <label>Sex (0:female 1:male): </label>
+    </div>
+    <div class="col-75">
+     <input id="Sex" name="Sex" type="number" class="input"  min="0" max="1">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+     <label>Blood Pressure (1-280):</label>
+    </div>
+    <div class="col-75">
+     <input name="Bp" type="number" class="input"  min="1" max="280">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>SpecificGravity(1.01-1.03):</label>
+    </div>
+    <div class="col-75">
+     <input name="Sg" type="number"class="input" min="1.005" max="1.030" step="0.001"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+        <label>Albumin(0-5):</label>
+    </div>
+    <div class="col-75">
+     <input name="Al" type="number" class="input" min="0" max="5"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Sugar(Su):(0-5)</label> 
+    </div>
+    <div class="col-75">
+     <input name="Su" type="number" class="input" min="0" max="5"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Red Blood Cell(0:No - 1:Yes):</label> 
+    </div>
+    <div class="col-75">
+     <input name="Rbc" type="number" class="input" min="0" max="1"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+      <label>Blood Urea (1-391):</label>
+    </div>
+    <div class="col-75">
+     <input name="Bu" type="number"class="input" min="1" max="391" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Serun Creatnine (0-76):</label> 
+    </div>
+    <div class="col-75">
+     <input name="Sc" id="Sc" type="number" class="input"required min="0.4" max="76" step="0.01">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+      <label>Sodium (1-163):</label>
+    </div>
+    <div class="col-75">
+    <input name="Sod" type="number" class="input" min="1" max="200" step="0.01"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Pottasium (1-50):</label>
+    </div>
+    <div class="col-75">
+    <input name="Pot" type="number"class="input" min="1" max="50" step="0.01"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Hemoglobin (3-19):</label>
+    </div>
+    <div class="col-75">
+     <input name="Hemo" type="number"class="input" min="3" max="20" step="0.01"required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>White Blood Cc(1000-30000):</label> 
+    </div>
+    <div class="col-75">
+    <input name="Wbcc" type="number"class="input" min="1000" max="30000" required>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+        <label>Red Blood Cc(1-10):</label> 
+    </div>
+    <div class="col-75">
+   <input name="Rbcc" type="number"class="input" required min="1" max="10" step="0.01">
+    </div>
+  </div>
+<div class="row">
+    <div class="col-25">
+       <label>Hypertension (0:No 1:Yes):</label>
+    </div>
+    <div class="col-75">
+            <input name="Htn" type="number" class="input"required min="0" max="1">
+    </div>
+  </div>
+        <br>
+        <input type="submit" value="submit" onclick="myFunction()">
+    
+        </fieldset> 
+    </form>
+</div>
+<div class="result" align="center">
+    <div class="r1">
+    <h3>Original Input:</h3>
+    {% if result == 1%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br>
+    <h2>Predicted:</h2>
+	<h2 style="color:red;">CKD</h2>
+    <p id="demo">
+     {% if demo%}
+        {% for variable in demo %}
+        <b>{{ variable }}</b><br>
+        {%endfor%}
+    {%endif%}
+    </p>
+    <span style='font-size:100px;'>&#128549;</span>
+	{% elif result == 0%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+        <br>
+        <br>
+    <h3>Prediction:</h3>
+	<h2 style="color:blue;">Not CKD</h2>
+    <p id="demo">
+    {% if demo%}
+        {% for variable in demo %}
+        <b>{{ variable }}</b><br>
+        {%endfor%}
+        {%if demo[1] > 90 %}
+        <span style='font-size:100px;'>&#128522;</span> 
+        {%else%}
+        <span style='font-size:100px;'>&#128549;</span>
+        {%endif%}
+    {%endif%}
+    </p>
+    
+	{% endif %}
+    </div>
+   </div>
+</div>
+
+    
+<! –– About part of the page -->  
+    
+<div id="about">
+    <button id="topb" ><a href="#home" style="color: white">&#9757</a></button>
+</div>      
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result{
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Disease Prediction</title>
+</head>
+    <h1>Welcome to ML World</h1>
+    <form action="{{ url_for('NaiveBayes') }}" method="POST">
+        <fieldset>
+        <legend>Input values:</legend>
+        Age:    <input name="Age" type="number" required><br>
+        Bp:     <input name="Bp" type="number" required><br>
+        Sg:     <input name="Sg" type="number" required><br>
+        Al:     <input name="Al" type="number" required><br>
+        Su:     <input name="Su" type="number" required><br>
+        Rbc:    <input name="Rbc" type="number" required><br>
+        Sc:     <input name="Sc" type="number" required><br>
+        Sod:    <input name="Sod" type="number" required><br>
+        Pot:    <input name="Pot" type="number" required><br>
+        Hemo:   <input name="Hemo" type="number" required><br>
+        Wbcc:   <input name="Wbcc" type="number" required><br>
+        Rbcc:   <input name="Rbcc" type="number" required><br>
+        Htn:    <input name="Htn" type="number" required><br>
+        <input type="submit">
+        </fieldset>
+    </form>
+<br>
+<div class="result" align="center">
+    {% if result == 1%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br> Prediction:
+	<h2 style="color:red;">CKD</h2>
+	{% elif result == 0%}
+    {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }}
+    {% endfor %}
+    <br>
+    <br> Prediction:
+	<h2 style="color:blue;">Not CKD</h2>
+	{% endif %}
+</div>
+</html>

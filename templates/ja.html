@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="Age" class="input" type="number" required min="1" max="100"><br>
+  <input id="Sex" type="number" class="input"  min="0" max="1" required><br>
+  <input id="Sc" name="Sc" type="number" class="input"  min="1" max="5" required><br>
+<button onclick="myFunction()">Try it</button>
+<p id="demo"></p>
+186*Math.pow(sc,-1.154)*Math.pow(a,-0.203);
+186*Math.pow(sc,-1.154)*Math.pow(a,-0.203)*0.742;
+
+<script>
+    
+function myFunction() {
+  var m;
+
+  // Get the value of the input field with id="numb"
+ var a = document.getElementById("Age").value;
+ var  b = document.getElementById("Sex").value;
+ var c = document.getElementById("Sc").value;
+
+  if(b==0){
+  m=(186*Math.pow(c,-1.154)*Math.pow(a,-0.203));
+  fun(m)
+  }
+  else if(b==1) {
+  m=(186*Math.pow(c,-1.154)*Math.pow(a,-0.203)*0.742);
+      fun(m)
+  }
+}
+function fun(m){
+    
+      if(m>90){
+          document.getElementById("demo").innerHTML = "kidney is normal in conditon";
+      }
+      else if(m >60 && m<90 ){
+          document.getElementById("demo").innerHTML = "kidney is little bit damage";
+      }
+      else if(m >30 && m<60 ){
+          document.getElementById("demo").innerHTML = "moderate kidney damage";
+      }
+      else if(m >15 && m<30 ){
+          document.getElementById("demo").innerHTML = "sereve kidney damage";
+      }
+      else if(m <15 ){
+          document.getElementById("demo").innerHTML = "the kidney are closed to failure orhave ready failed ";
+      }
+    
+}
+    
+</script>
+    
+</body>
+    
+</html>
